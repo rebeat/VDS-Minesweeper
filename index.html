@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Deeltoets 1 - Stef van Dijk</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <h1>MineSweeper Javascript</h1>
+        <p>V. 0.4</p>
+
+        <h2>Simple MineSweeper Inspired JS Game</h2>
+        <p>
+            Instructions:<br>
+            <ul>
+                <li>Click a block to see if there is a bomb</li>
+                <li>Number shows bombs to the <strong>sides</strong> and <strong>NOT DIAGONAL</strong></li>
+            </ul>
+        
+        <div id="blocktainer">
+            <div class="blockrow">
+                <div class="block" onclick="check(1)" id="bl_1"><p></p></div>
+                <div class="block" onclick="check(2)" id="bl_2"><p></p></div>
+                <div class="block" onclick="check(3)" id="bl_3"><p></p></div>
+                <div class="block" onclick="check(4)" id="bl_4"><p></p></div>
+                <div class="block" onclick="check(5)" id="bl_5"><p></p></div>
+            </div>
+            <div class="blockrow">
+                <div class="block" onclick="check(6)" id="bl_6"><p></p></div>
+                <div class="block" onclick="check(7)" id="bl_7"><p></p></div>
+                <div class="block" onclick="check(8)" id="bl_8"><p></p></div>
+                <div class="block" onclick="check(9)" id="bl_9"><p></p></div>
+                <div class="block" onclick="check(10)" id="bl_10"><p></p></div>
+            </div>
+            <div class="blockrow">
+                <div class="block" onclick="check(11)" id="bl_11"><p></p></div>
+                <div class="block" onclick="check(12)" id="bl_12"><p></p></div>
+                <div class="block" onclick="check(13)" id="bl_13"><p></p></div>
+                <div class="block" onclick="check(14)" id="bl_14"><p></p></div>
+                <div class="block" onclick="check(15)" id="bl_15"><p></p></div>
+            </div>
+            <div class="blockrow">
+                <div class="block" onclick="check(16)" id="bl_16"><p></p></div>
+                <div class="block" onclick="check(17)" id="bl_17"><p></p></div>
+                <div class="block" onclick="check(18)" id="bl_18"><p></p></div>
+                <div class="block" onclick="check(19)" id="bl_19"><p></p></div>
+                <div class="block" onclick="check(20)" id="bl_20"><p></p></div>
+            </div>
+            <div class="blockrow">
+                <div class="block" onclick="check(21)" id="bl_21"><p></p></div>
+                <div class="block" onclick="check(22)" id="bl_22"><p></p></div>
+                <div class="block" onclick="check(23)" id="bl_23"><p></p></div>
+                <div class="block" onclick="check(24)" id="bl_24"><p></p></div>
+                <div class="block" onclick="check(25)" id="bl_25"><p></p></div>
+            </div>
+        </div>
+        <div id="blocktainer">
+            <h2>Statistics</h2>
+            <ul>
+                <li>Games Played: <span id="played">0</span></li>
+                <li>Games Won: <span id="won">0</span></li>
+                <li>Games Lost: <span id="died">0</span></li>
+                <li>Percentage won: <span id="percwon">0</span></li>
+            </ul>
+        </div>
+        <div id="blocktainer">
+<!--
+            <h2>Settings</h2>
+            <ul>
+                <li>Reset stats</li>
+                <li>Reload Game<span id="won">0</span></li>
+            </ul>
+        </div>
+-->
+
+        <script src="js/script.js"></script>
+    </body>
+</html>
