@@ -1,10 +1,43 @@
 /* Stylesheet for MineSweeper */
 /* By Stef van Dijk for CMD @ HvA */
 
+body {
+	max-width: 625px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: "Calibri", Arial, sans-serif;
+	color:#FFFFFF;
+	background-color:#000000;
+}
+
+h1, h2, h3{
+	margin:0;
+	padding:0;
+}
+
 #blocktainer {
+	margin-left:auto;
+	margin-right:auto;
 	width: 280px;
 	height: 280px;
-	float: left;
+	/*float: left;*/
+	clear: both;
+	color:#000000;
+}
+
+#infotainer {
+	float:left;
+}
+
+#statainer {
+	float:left;
+	background-color: rgba(255,255,255,0.2);
+	padding:0 20px 0 10px;
+}
+
+#statainer ul {
+	list-style: none;
+	margin-left: -20px;
 }
 
 #blocktainer p {
@@ -21,6 +54,13 @@
 	height: 50px;
 	float: left;
 	margin: 3px;
+}
+
+.block:hover {
+
+	width:46px;
+	height:46px;
+	margin:5px;
 }
 
 .noBomb {

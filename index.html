@@ -8,16 +8,36 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <h1>MineSweeper Javascript</h1>
-        <p>V. 0.4</p>
+        <div id="infotainer">
+            <h1>MineSweeper Javascript</h1>
+            <p>V. 0.4</p>
 
-        <h2>Simple MineSweeper Inspired JS Game</h2>
-        <p>
-            Instructions:<br>
+            <h2>Simple MineSweeper Inspired JS Game</h2>
+            <p>
+                Instructions:<br>
+                <ul>
+                    <li>Click a block to see if there is a bomb</li>
+                    <li>Number shows bombs to the <strong>sides</strong> and <strong>NOT DIAGONAL</strong></li>
+                </ul>
+            </p>
+        </div>
+        <div id="statainer">
+            <h2>Statistics</h2>
             <ul>
-                <li>Click a block to see if there is a bomb</li>
-                <li>Number shows bombs to the <strong>sides</strong> and <strong>NOT DIAGONAL</strong></li>
+                <li>Games Played: <span id="played">0</span></li>
+                <li>Games Won: <span id="won">0</span></li>
+                <li>Games Lost: <span id="died">0</span></li>
+                <li>Percentage won: <span id="percwon">0</span></li>
             </ul>
+        </div>
+<!--        <div id="settainer">
+            <h2>Settings</h2>
+            <ul>
+                <li>Reset stats</li>
+                <li>Reload Game<span id="won">0</span></li>
+            </ul>
+        </div>
+-->
         
         <div id="blocktainer">
             <div class="blockrow">
@@ -56,24 +76,7 @@
                 <div class="block" onclick="check(25)" id="bl_25"><p></p></div>
             </div>
         </div>
-        <div id="blocktainer">
-            <h2>Statistics</h2>
-            <ul>
-                <li>Games Played: <span id="played">0</span></li>
-                <li>Games Won: <span id="won">0</span></li>
-                <li>Games Lost: <span id="died">0</span></li>
-                <li>Percentage won: <span id="percwon">0</span></li>
-            </ul>
-        </div>
-        <div id="blocktainer">
-<!--
-            <h2>Settings</h2>
-            <ul>
-                <li>Reset stats</li>
-                <li>Reload Game<span id="won">0</span></li>
-            </ul>
-        </div>
--->
+        
 
         <script src="js/script.js"></script>
     </body>

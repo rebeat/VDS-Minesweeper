@@ -23,6 +23,7 @@ Round: http://www.w3schools.com/jsref/jsref_round.asp
 var blockarray = [];
 var bombcounter = 0;
 var noBomb = 25;
+var bomb, chkBlock, bombstatus, block;
 
 // Check if played before - Set the LS if not --> +1 if played before
 if (localStorage.played) {
@@ -32,16 +33,12 @@ if (localStorage.played) {
 }
 
 // Check if died before - Set the LS if not set before
-if (localStorage.died) {
-
-} else {
+if (!localStorage.died) {
 	localStorage.died = 0;
 }
 
 // Check if won before - Set the LS if not set before
-if (localStorage.won) {
-
-} else {
+if (!localStorage.won) {
 	localStorage.won = 0;
 }
 
@@ -52,12 +49,12 @@ var percwon = Math.round(localStorage.won / localStorage.played * 100);
 document.getElementById("played").innerHTML = localStorage.played;
 document.getElementById("died").innerHTML = localStorage.died;
 document.getElementById("won").innerHTML = localStorage.won;
-document.getElementById("percwon").innerHTML = percwon + " %";
+document.getElementById("percwon").innerHTML = percwon + "%";
 
 //Randomize bombs with a loop
-for (i=0; i < 25; i++) {
+for (var i = 0; i < 25; i++) {
 	// Use random number to define bomb true/false
-	bomb = Math.random() 
+	bomb = Math.random(); 
     // Used low number to prevent cluttering at the start
 	if (bomb >= 0.3) {
 		bomb = false;
@@ -77,17 +74,19 @@ for (i=0; i < 25; i++) {
 // Get total number of clean blocks - Used to check for win
 noBomb = noBomb - bombcounter;
 
-// Show all bombs when died (Called in function Check) - Work-in-Progress - Not working, yet
-var bombshow = function(id) {
-	for (i=0; i<25; i++){
+// Show all bombs when died (Called in function Check)
+var bombShow = function() {
+	for (i=1; i<=25; i++){
 		chkBlock = blockarray[i-1];
 		blockid = chkBlock[0];
 		bombstatus = chkBlock[1];
 		if (bombstatus) {
+			var blockid = "bl_" + blockid;
+			var block = document.getElementById(blockid);
 			block.className += " " + "aBomb";
 		}
 	}
-}
+};
 
 // Show numbers for surrounding bombs (L, R, T, D, not diagonal)
 var numberCheck = function(id) {
@@ -107,49 +106,49 @@ var numberCheck = function(id) {
 	if (id !== 5 && id !== 10 && id !== 15 && id !== 20 && id !== 25) {
 		bRight = true;
 	}
-	if (id !== 1 && id !== 2 && id !== 3 && id !== 4 && id !== 5) {
+	if (!(id <= 5)) {
 		bTop = true;
 	}
-	if (id !== 21 && id !== 22 && id !== 23 && id !== 24 && id !== 25) {
+	if (!(id >= 21)) {
 		bBottom = true;
 	}
 
 	// Actually check
 	if (bLeft) {
 		// Block to Left
-			chkBlock = blockarray[id-1-1]
-			bombstatus = chkBlock[1]
+			chkBlock = blockarray[id-1-1];
+			bombstatus = chkBlock[1];
 			if (bombstatus) {
 				areacount ++;
 			}
 	}
 	if(bRight){
 		// Block to Right
-			chkBlock = blockarray[id-1+1]
-			bombstatus = chkBlock[1]
+			chkBlock = blockarray[id-1+1];
+			bombstatus = chkBlock[1];
 			if (bombstatus) {
 				areacount ++;
 			}
 	}
 	if(bTop){
 		// Block Above
-			chkBlock = blockarray[id-1-5]
-			bombstatus = chkBlock[1]
+			chkBlock = blockarray[id-1-5];
+			bombstatus = chkBlock[1];
 			if (bombstatus) {
 				areacount ++;
 			}
 	}
 	if(bBottom){
 		// Block Below
-			chkBlock = blockarray[id-1+5]
-			bombstatus = chkBlock[1]
+			chkBlock = blockarray[id-1+5];
+			bombstatus = chkBlock[1];
 			if (bombstatus) {
 				areacount ++;
 			}
 	}
 	// Write result to HTML/Block
-	chkBlock = blockarray[id-1]
-	blockid = chkBlock[0]
+	chkBlock = blockarray[id-1];
+	blockid = chkBlock[0];
 	var blockid = "bl_" + blockid;
 	document.getElementById(blockid).innerHTML = "<p>" + areacount + "</p>";
 };
@@ -158,15 +157,15 @@ var numberCheck = function(id) {
 var check = function (id) {
 	numberCheck(id);
 	// Get true/false status
-	chkBlock = blockarray[id-1]
-	blockid = chkBlock[0]
-	bombstatus = chkBlock[1]
+	chkBlock = blockarray[id-1];
+	blockid = chkBlock[0];
+	bombstatus = chkBlock[1];
 	// Get the ID of the block to add a class later on
 	var blockid = "bl_" + blockid;
-	var block = document.getElementById(blockid)
+	var block = document.getElementById(blockid);
 	if (bombstatus) {
 		// BOMB! You have died --> Restart
-		block.className += " " + "aBomb";
+		bombShow();
 		localStorage.died ++;
 		alert("Darn, you died. (Again?)");
 		location.reload();
@@ -184,4 +183,4 @@ var check = function (id) {
 		alert("Winner!");
 		location.reload();
 	}
-}
+};
