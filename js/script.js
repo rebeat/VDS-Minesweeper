@@ -90,467 +90,69 @@ var bombshow = function(id) {
 }
 
 // Show numbers for surrounding bombs (L, R, T, D, not diagonal)
-var numberCheck = function (id) {
+var numberCheck = function(id) {
+	// Var for counting surrounding bombs
 	var areacount = 0;
-	switch (id) {
-		case 1:
-			// Block to Right
-			chkBlock = blockarray[id-1+1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block Below
-			chkBlock = blockarray[id-1+5]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Original Block
-			chkBlock = blockarray[id-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			var blockid = "bl_" + blockid;
-			document.getElementById(blockid).innerHTML = "<p>" + areacount + "</p>";
-			break;
-		case 2:
-			// Block to Left
-			chkBlock = blockarray[id-1-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block to Right
-			chkBlock = blockarray[id-1+1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block Below
-			chkBlock = blockarray[id-1+5]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Original Block
-			chkBlock = blockarray[id-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			var blockid = "bl_" + blockid;
-			document.getElementById(blockid).innerHTML = "<p>" + areacount + "</p>";
-			break;
-		case 3:
-			// Block to Left
-			chkBlock = blockarray[id-1-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block to Right
-			chkBlock = blockarray[id-1+1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block Below
-			chkBlock = blockarray[id-1+5]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Original Block
-			chkBlock = blockarray[id-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			var blockid = "bl_" + blockid;
-			document.getElementById(blockid).innerHTML = "<p>" + areacount + "</p>";
-			break;
-		case 4:
-			// Block to Left
-			chkBlock = blockarray[id-1-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block to Right
-			chkBlock = blockarray[id-1+1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block Below
-			chkBlock = blockarray[id-1+5]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Original Block
-			chkBlock = blockarray[id-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			var blockid = "bl_" + blockid;
-			document.getElementById(blockid).innerHTML = "<p>" + areacount + "</p>";
-			break;
-		case 5:
-			// Block to Left
-			chkBlock = blockarray[id-1-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block Below
-			chkBlock = blockarray[id-1+5]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Original Block
-			chkBlock = blockarray[id-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			var blockid = "bl_" + blockid;
-			document.getElementById(blockid).innerHTML = "<p>" + areacount + "</p>";
-			break;
-		case 6:
-			// Block to Right
-			chkBlock = blockarray[id-1+1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block Below
-			chkBlock = blockarray[id-1+5]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block Above
-			chkBlock = blockarray[id-1-5]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Original Block
-			chkBlock = blockarray[id-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			var blockid = "bl_" + blockid;
-			document.getElementById(blockid).innerHTML = "<p>" + areacount + "</p>";
-			break;
-		case 10:
-			// Block to Left
-			chkBlock = blockarray[id-1-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block Below
-			chkBlock = blockarray[id-1+5]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block Above
-			chkBlock = blockarray[id-1-5]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Original Block
-			chkBlock = blockarray[id-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			var blockid = "bl_" + blockid;
-			document.getElementById(blockid).innerHTML = "<p>" + areacount + "</p>";
-			break;
-		case 15:
-			// Block to Left
-			chkBlock = blockarray[id-1-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block Below
-			chkBlock = blockarray[id-1+5]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block Above
-			chkBlock = blockarray[id-1-5]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Original Block
-			chkBlock = blockarray[id-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			var blockid = "bl_" + blockid;
-			document.getElementById(blockid).innerHTML = "<p>" + areacount + "</p>";
-			break;
-		case 20:
-			// Block to Left
-			chkBlock = blockarray[id-1-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block Below
-			chkBlock = blockarray[id-1+5]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block Above
-			chkBlock = blockarray[id-1-5]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Original Block
-			chkBlock = blockarray[id-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			var blockid = "bl_" + blockid;
-			document.getElementById(blockid).innerHTML = "<p>" + areacount + "</p>";
-			break;
-		case 21:
-			// Block to Right
-			chkBlock = blockarray[id-1+1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block Above
-			chkBlock = blockarray[id-1-5]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Original Block
-			chkBlock = blockarray[id-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			var blockid = "bl_" + blockid;
-			document.getElementById(blockid).innerHTML = "<p>" + areacount + "</p>";
-			break;
-		case 22:
-			// Block to Left
-			chkBlock = blockarray[id-1-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block to Right
-			chkBlock = blockarray[id-1+1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block Above
-			chkBlock = blockarray[id-1-5]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Original Block
-			chkBlock = blockarray[id-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			var blockid = "bl_" + blockid;
-			document.getElementById(blockid).innerHTML = "<p>" + areacount + "</p>";
-			break;
-		case 23:
-			// Block to Left
-			chkBlock = blockarray[id-1-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block to Right
-			chkBlock = blockarray[id-1+1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block Above
-			chkBlock = blockarray[id-1-5]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Original Block
-			chkBlock = blockarray[id-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			var blockid = "bl_" + blockid;
-			document.getElementById(blockid).innerHTML = "<p>" + areacount + "</p>";
-			break;
-		case 24:
-			// Block to Left
-			chkBlock = blockarray[id-1-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block to Right
-			chkBlock = blockarray[id-1+1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block Above
-			chkBlock = blockarray[id-1-5]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Original Block
-			chkBlock = blockarray[id-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			var blockid = "bl_" + blockid;
-			document.getElementById(blockid).innerHTML = "<p>" + areacount + "</p>";
-			break;
-		case 25:
-			// Block to Left
-			chkBlock = blockarray[id-1-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block Above
-			chkBlock = blockarray[id-1-5]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Original Block
-			chkBlock = blockarray[id-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			var blockid = "bl_" + blockid;
-			document.getElementById(blockid).innerHTML = "<p>" + areacount + "</p>";
-			break;
-		default:
-			// Block to Left
-			chkBlock = blockarray[id-1-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block to Right
-			chkBlock = blockarray[id-1+1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block Below
-			chkBlock = blockarray[id-1+5]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Block Above
-			chkBlock = blockarray[id-1-5]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			if (bombstatus) {
-				areacount ++;
-				console.log("area = " + areacount);
-			}
-			// Original Block
-			chkBlock = blockarray[id-1]
-			blockid = chkBlock[0]
-			bombstatus = chkBlock[1]
-			var blockid = "bl_" + blockid;
-			document.getElementById(blockid).innerHTML = "<p>" + areacount + "</p>";
-			break;
+
+	// Vars to know what to check
+	var bLeft = false;
+	var bRight = false;
+	var bTop = false;
+	var bBottom = false;
+
+	// Check which sides should be checked
+	if (id !== 1 && id !== 6 && id !== 11 && id !== 16 && id !== 21) {
+		bLeft = true;
 	}
-}
+	if (id !== 5 && id !== 10 && id !== 15 && id !== 20 && id !== 25) {
+		bRight = true;
+	}
+	if (id !== 1 && id !== 2 && id !== 3 && id !== 4 && id !== 5) {
+		bTop = true;
+	}
+	if (id !== 21 && id !== 22 && id !== 23 && id !== 24 && id !== 25) {
+		bBottom = true;
+	}
+
+	// Actually check
+	if (bLeft) {
+		// Block to Left
+			chkBlock = blockarray[id-1-1]
+			bombstatus = chkBlock[1]
+			if (bombstatus) {
+				areacount ++;
+			}
+	}
+	if(bRight){
+		// Block to Right
+			chkBlock = blockarray[id-1+1]
+			bombstatus = chkBlock[1]
+			if (bombstatus) {
+				areacount ++;
+			}
+	}
+	if(bTop){
+		// Block Above
+			chkBlock = blockarray[id-1-5]
+			bombstatus = chkBlock[1]
+			if (bombstatus) {
+				areacount ++;
+			}
+	}
+	if(bBottom){
+		// Block Below
+			chkBlock = blockarray[id-1+5]
+			bombstatus = chkBlock[1]
+			if (bombstatus) {
+				areacount ++;
+			}
+	}
+	// Write result to HTML/Block
+	chkBlock = blockarray[id-1]
+	blockid = chkBlock[0]
+	var blockid = "bl_" + blockid;
+	document.getElementById(blockid).innerHTML = "<p>" + areacount + "</p>";
+};
 
 // Check function --> Called on-click --> Pushes block ID
 var check = function (id) {
@@ -574,8 +176,6 @@ var check = function (id) {
 		block.onclick = null;
 		// Subtract one clean field for WIN-situation
 		noBomb--;
-		console.log("Lucky!");
-		console.log("No Bomb = " + noBomb);
 	}
 
 	// Check if you've won the game!
@@ -585,6 +185,3 @@ var check = function (id) {
 		location.reload();
 	}
 }
-
-// Debug
-console.log("COUNT = " + bombcounter)
