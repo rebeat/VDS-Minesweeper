@@ -16,14 +16,19 @@ Remove On-Click Event: http://www.webdesignerforum.co.uk/topic/44218-remove-oncl
 LocalStorage: Presentatie Stef van Dijk - Internetstandaarden
 Switch: http://www.w3schools.com/js/js_switch.asp
 Round: http://www.w3schools.com/jsref/jsref_round.asp
+Codecademy JS tutorials: http://www.codecademy.com/en/tracks/javascript/
 
 */
 
 // Set some vars to work with
-var blockarray = [];
+var blockArray = [];
 var bombcounter = 0;
 var noBomb = 25;
-var bomb, chkBlock, bombstatus, block;
+var bomb, chkBlock, bombstatus;
+
+window.onload = function() {
+	// to be filled
+};
 
 // Check if played before - Set the LS if not --> +1 if played before
 if (localStorage.played) {
@@ -52,7 +57,7 @@ document.getElementById("won").innerHTML = localStorage.won;
 document.getElementById("percwon").innerHTML = percwon + "%";
 
 //Randomize bombs with a loop
-for (var i = 0; i < 25; i++) {
+for (var i = 0; i <= 25; i++) {
 	// Use random number to define bomb true/false
 	bomb = Math.random(); 
     // Used low number to prevent cluttering at the start
@@ -67,8 +72,11 @@ for (var i = 0; i < 25; i++) {
 			bomb = false;
 		}
 	}
-	// Push the randomized blocks into the blockarray
-	blockarray.push(block = [i+1, bomb]);
+	// Push the randomized blocks into the blockArray
+	blockArray.push({
+		bombId: i,
+		bombStatus: bomb
+	});
 }
 
 // Get total number of clean blocks - Used to check for win
@@ -77,9 +85,10 @@ noBomb = noBomb - bombcounter;
 // Show all bombs when died (Called in function Check)
 var bombShow = function() {
 	for (i=1; i<=25; i++){
-		chkBlock = blockarray[i-1];
-		blockid = chkBlock[0];
-		bombstatus = chkBlock[1];
+		chkBlock = blockArray[i];
+		console.log(chkBlock);
+		blockid = chkBlock.bombId;
+		bombstatus = chkBlock.bombStatus;
 		if (bombstatus) {
 			var blockid = "bl_" + blockid;
 			var block = document.getElementById(blockid);
@@ -116,39 +125,40 @@ var numberCheck = function(id) {
 	// Actually check
 	if (bLeft) {
 		// Block to Left
-			chkBlock = blockarray[id-1-1];
-			bombstatus = chkBlock[1];
+			chkBlock = blockArray[id-1];
+			bombstatus = chkBlock.bombStatus;
 			if (bombstatus) {
 				areacount ++;
 			}
 	}
 	if(bRight){
 		// Block to Right
-			chkBlock = blockarray[id-1+1];
-			bombstatus = chkBlock[1];
+			chkBlock = blockArray[id+1];
+			bombstatus = chkBlock.bombStatus;
 			if (bombstatus) {
 				areacount ++;
 			}
 	}
 	if(bTop){
 		// Block Above
-			chkBlock = blockarray[id-1-5];
-			bombstatus = chkBlock[1];
+			chkBlock = blockArray[id-5];
+			bombstatus = chkBlock.bombStatus;
 			if (bombstatus) {
 				areacount ++;
 			}
 	}
 	if(bBottom){
 		// Block Below
-			chkBlock = blockarray[id-1+5];
-			bombstatus = chkBlock[1];
+			chkBlock = blockArray[id+5];
+			bombstatus = chkBlock.bombStatus;
 			if (bombstatus) {
 				areacount ++;
 			}
 	}
 	// Write result to HTML/Block
-	chkBlock = blockarray[id-1];
-	blockid = chkBlock[0];
+
+	chkBlock = blockArray[id];
+	blockid = chkBlock.bombId;
 	var blockid = "bl_" + blockid;
 	document.getElementById(blockid).innerHTML = "<p>" + areacount + "</p>";
 };
@@ -157,9 +167,9 @@ var numberCheck = function(id) {
 var check = function (id) {
 	numberCheck(id);
 	// Get true/false status
-	chkBlock = blockarray[id-1];
-	blockid = chkBlock[0];
-	bombstatus = chkBlock[1];
+	chkBlock = blockArray[id];
+	blockid = chkBlock.bombId;
+	bombstatus = chkBlock.bombStatus;
 	// Get the ID of the block to add a class later on
 	var blockid = "bl_" + blockid;
 	var block = document.getElementById(blockid);
