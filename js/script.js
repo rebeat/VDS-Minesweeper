@@ -29,17 +29,10 @@ var bombcounter = 0;
 var noBomb = 25;
 var bomb, chkBlock, bombstatus;
 
+// Call the start-up stuff
 window.onload = function() {
-	blocktainer = document.getElementById("blocktainer");
-	for (var i = 1; i<=25; i++) {
-		buildblock = document.createElement('div');
-		buildblock.className = "block";
-		buildblock.id = "bl_" + i;
-		buildblock.onclick = function() {	
-			check(this.id);
-		}
-		blocktainer.appendChild(buildblock);
-	}
+	blockDraw();
+	randomizer();
 };
 
 // Check if played before - Set the LS if not --> +1 if played before
@@ -68,28 +61,44 @@ document.getElementById("died").innerHTML = localStorage.died;
 document.getElementById("won").innerHTML = localStorage.won;
 document.getElementById("percwon").innerHTML = percwon + "%";
 
-//Randomize bombs with a loop
-for (var i = 0; i <= 25; i++) {
-	// Use random number to define bomb true/false
-	bomb = Math.random(); 
-    // Used low number to prevent cluttering at the start
-	if (bomb >= 0.3) {
-		bomb = false;
-	} else {
-		// Limit max number of bombs
-		if (bombcounter <=7) {
-			bomb = true;
-			bombcounter++;
-		} else {
+// Randomize bombs with a loop
+var randomizer = function() {
+	for (var i = 0; i <= 25; i++) {
+		// Use random number to define bomb true/false
+		bomb = Math.random(); 
+	    // Used low number to prevent cluttering at the start
+		if (bomb >= 0.3) {
 			bomb = false;
+		} else {
+			// Limit max number of bombs
+			if (bombcounter <=7) {
+				bomb = true;
+				bombcounter++;
+			} else {
+				bomb = false;
+			}
 		}
+		// Push the randomized blocks into the blockArray
+		blockArray.push({
+			bombId: i,
+			bombStatus: bomb
+		});
 	}
-	// Push the randomized blocks into the blockArray
-	blockArray.push({
-		bombId: i,
-		bombStatus: bomb
-	});
-}
+};
+
+// Draw the div's and connect an on-click event
+var blockDraw = function() {
+	blocktainer = document.getElementById("blocktainer");
+	for (var i = 1; i<=25; i++) {
+		buildblock = document.createElement('div');
+		buildblock.className = "block";
+		buildblock.id = "bl_" + i;
+		buildblock.onclick = function() {	
+			check(this.id);
+		}
+		blocktainer.appendChild(buildblock);
+	}
+};
 
 // Get total number of clean blocks - Used to check for win
 noBomb = noBomb - bombcounter;
@@ -172,6 +181,7 @@ var numberCheck = function(id) {
 	blockid = chkBlock.bombId;
 	var blockid = "bl_" + blockid;
 	document.getElementById(blockid).innerHTML = "<p>" + areacount + "</p>";
+
 };
 
 // Check function --> Called on-click --> Pushes block ID
