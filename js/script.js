@@ -129,10 +129,10 @@ var numberCheck = function(id) {
 	var bBottom = false;
 
 	// Check which sides should be checked
-	if (id !== 1 && id !== 6 && id !== 11 && id !== 16 && id !== 21) {
+	if (id%5 !== 1) {
 		bLeft = true;
 	}
-	if (id !== 5 && id !== 10 && id !== 15 && id !== 20 && id !== 25) {
+	if (id%5 !== 0) {
 		bRight = true;
 	}
 	if (!(id <= 5)) {
