@@ -27,9 +27,10 @@ String replace: http://www.w3schools.com/jsref/jsref_replace.asp
 var blockArray = [];
 var bombcounter = 0;
 var noBomb = 25;
-var bomb, chkBlock, bombstatus;
+var bomb, chkBlock, bombstatus, blocktainer, buildblock, gameReload, statReset;
 
 window.onload = function() {
+    // Draw the blocks
 	blocktainer = document.getElementById("blocktainer");
 	for (var i = 1; i<=25; i++) {
 		buildblock = document.createElement('div');
@@ -37,9 +38,30 @@ window.onload = function() {
 		buildblock.id = "bl_" + i;
 		buildblock.onclick = function() {	
 			check(this.id);
-		}
+		};
 		blocktainer.appendChild(buildblock);
 	}
+    // Link settings buttons
+    
+    gameReload = document.getElementById("gamereload");
+    gameReload.onclick = function() {
+        location.reload();
+    };
+    
+    statReset = document.getElementById("statreset");
+    statReset.onclick = function() {
+        confirm("Are you sure you want to delete your statistics?");
+        if (confirm) {
+            confirm("Really sure?");
+            if (confirm) {
+                localStorage.played = -1;
+                localStorage.died = 0;
+                localStorage.won = 0;
+                location.reload();
+            }
+        }
+    };
+    
 };
 
 // Check if played before - Set the LS if not --> +1 if played before
@@ -66,37 +88,45 @@ var percwon = Math.round(localStorage.won / localStorage.played * 100);
 document.getElementById("played").innerHTML = localStorage.played;
 document.getElementById("died").innerHTML = localStorage.died;
 document.getElementById("won").innerHTML = localStorage.won;
-document.getElementById("percwon").innerHTML = percwon + "%";
-
-//Randomize bombs with a loop
-for (var i = 0; i <= 25; i++) {
-	// Use random number to define bomb true/false
-	bomb = Math.random(); 
-    // Used low number to prevent cluttering at the start
-	if (bomb >= 0.3) {
-		bomb = false;
-	} else {
-		// Limit max number of bombs
-		if (bombcounter <=7) {
-			bomb = true;
-			bombcounter++;
-		} else {
-			bomb = false;
-		}
-	}
-	// Push the randomized blocks into the blockArray
-	blockArray.push({
-		bombId: i,
-		bombStatus: bomb
-	});
+// Prevent show of NaN on first load
+if (percwon >= 0) {
+    document.getElementById("percwon").innerHTML = percwon + "%";
 }
+// Randomize bombs with a loop - Function to recall if bombs are too low
+var bombRandom = function() {
+    
+    
+    
+    for (var i = 0; i <= 25; i++) {
+        // Use random number to define bomb true/false
+        bomb = Math.random(); 
+        // Used low number to prevent cluttering at the start
+        if (bomb >= 0.35) {
+            bomb = false;
+        } else {
+            // Limit max number of bombs
+            if (bombcounter <=9) {
+                bomb = true;
+                bombcounter++;
+            } else {
+                bomb = false;
+            }
+        }
+        // Push the randomized blocks into the blockArray
+        blockArray.push({
+            bombId: i,
+            bombStatus: bomb
+        });
+    }
+};
+bombRandom();
 
 // Get total number of clean blocks - Used to check for win
 noBomb = noBomb - bombcounter;
 
 // Show all bombs when died (Called in function Check)
 var bombShow = function() {
-	for (i=1; i<=25; i++){
+	for (var i=1; i<=25; i++){
 		chkBlock = blockArray[i];
 		blockid = chkBlock.bombId;
 		bombstatus = chkBlock.bombStatus;
