@@ -17,6 +17,9 @@ LocalStorage: Presentatie Stef van Dijk - Internetstandaarden
 Switch: http://www.w3schools.com/js/js_switch.asp
 Round: http://www.w3schools.com/jsref/jsref_round.asp
 Codecademy JS tutorials: http://www.codecademy.com/en/tracks/javascript/
+Append Child: http://www.w3schools.com/jsref/met_node_appendchild.asp
+Append Child: http://stackoverflow.com/questions/19649778/how-to-create-div-element-dynamically-and-add-styling-using-javascript
+String replace: http://www.w3schools.com/jsref/jsref_replace.asp
 
 */
 
@@ -27,7 +30,16 @@ var noBomb = 25;
 var bomb, chkBlock, bombstatus;
 
 window.onload = function() {
-	// to be filled
+	blocktainer = document.getElementById("blocktainer");
+	for (var i = 1; i<=25; i++) {
+		buildblock = document.createElement('div');
+		buildblock.className = "block";
+		buildblock.id = "bl_" + i;
+		buildblock.onclick = function() {	
+			check(this.id);
+		}
+		blocktainer.appendChild(buildblock);
+	}
 };
 
 // Check if played before - Set the LS if not --> +1 if played before
@@ -86,7 +98,6 @@ noBomb = noBomb - bombcounter;
 var bombShow = function() {
 	for (i=1; i<=25; i++){
 		chkBlock = blockArray[i];
-		console.log(chkBlock);
 		blockid = chkBlock.bombId;
 		bombstatus = chkBlock.bombStatus;
 		if (bombstatus) {
@@ -165,6 +176,7 @@ var numberCheck = function(id) {
 
 // Check function --> Called on-click --> Pushes block ID
 var check = function (id) {
+	id = parseInt(id.replace("bl_", ""));
 	numberCheck(id);
 	// Get true/false status
 	chkBlock = blockArray[id];
